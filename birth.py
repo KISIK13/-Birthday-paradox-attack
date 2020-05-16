@@ -1,26 +1,18 @@
 import hashlib
 import random
 
-secret = "698d51a19d8a121ce581499d7b701668" #111
-dict = '1234567890'
+secret = "962012d09b8170d912f0669f6d7d9d07" 
+dict = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'
 
-for i in range (858993459):
+int minLen
+int maxLen
+for i in range (2147483648):
     pwd = ''
 
-    for j in range (3):
+    for j in range (random.randint(minLen, maxLen)):
         pwd += random.choice( dict )
     hash = hashlib.md5(pwd.encode('utf-8')).hexdigest()
-    file = open('date.txt', 'a')
-    file.write(hash + '\n')
-    file.close()
-
-find = "1"
-file = open('date.txt', 'r')
-while find:
-    find = file.readline()
-    find = find.rstrip('\n')
-    if (find == secret):
-        print("done")
+    if(hash == secret):
+        print(pwd + " done")
         break;
-#работает,прочитать про json формат,чтобы хранить данные в виде - пароль:хеш
-#либо все в форе делать,закрывая файл, а потом опять открывая
+        
